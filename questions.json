@@ -1,0 +1,70 @@
+[
+    {
+        "question": "Was passiert im ersten Kapitel von \"Die Physiker\" von Friedrich D\u00fcrrenmatt?",
+        "options": [
+            {
+                "text": "Die Hauptfigur, M\u00f6bius, wird vorgestellt und zeigt Anzeichen von Geisteskrankheit.",
+                "correct": false
+            },
+            {
+                "text": "Die Physiker M\u00f6bius, Einstein und Newton diskutieren ihre Theorien.",
+                "correct": false
+            },
+            {
+                "text": "Eine Krankenschwester wird ermordet, und Inspektor Richard Voss ermittelt den Fall.",
+                "correct": true
+            }
+        ]
+    },
+    {
+        "question": "Wer sind die Hauptfiguren im ersten Kapitel von \"Die Physiker\"?",
+        "options": [
+            {
+                "text": "M\u00f6bius, Newton und Einstein",
+                "correct": true
+            },
+            {
+                "text": "M\u00f6bius, Beutler und Rose",
+                "correct": false
+            },
+            {
+                "text": "M\u00f6bius, Inspektor Voss und Fr\u00e4ulein Doktor Mathilde von Zahnd",
+                "correct": false
+            }
+        ]
+    },
+    {
+        "question": "Wo spielt die Handlung im ersten Kapitel von \"Die Physiker\"?",
+        "options": [
+            {
+                "text": "In einem Irrenhaus",
+                "correct": true
+            },
+            {
+                "text": "In einem Forschungsinstitut",
+                "correct": false
+            },
+            {
+                "text": "In einem Universit\u00e4tslabor",
+                "correct": false
+            }
+        ]
+    },
+    {
+        "question": "Warum befinden sich die Physiker im Irrenhaus?",
+        "options": [
+            {
+                "text": "Sie sind alle geisteskrank und werden behandelt.",
+                "correct": false
+            },
+            {
+                "text": "Sie nutzen das Irrenhaus als Tarnung, um ihre Forschungen vor der \u00d6ffentlichkeit zu verbergen.",
+                "correct": true
+            },
+            {
+                "text": "Sie wurden f\u00e4lschlicherweise f\u00fcr verr\u00fcckt erkl\u00e4rt und versuchen, ihre Unschuld zu beweisen.",
+                "correct": false
+            }
+        ]
+    }
+]

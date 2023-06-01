@@ -1,7 +1,10 @@
+import json
 
 
 def init():
-    pass
+    with open("questions.json", "r") as f:
+        questions = json.load(f)
+    score = 0
 
 
 def ask_questions():
