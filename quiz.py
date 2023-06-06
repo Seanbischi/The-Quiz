@@ -8,8 +8,9 @@ def init():
     return questions, score
 
 
-def ask_questions():
-    pass
+def ask_questions(questions, score):
+    for q_index in range(len(questions)):
+        pass
 
 
 def final():
@@ -18,5 +19,5 @@ def final():
 
 if __name__ == "__main__":
     my_questions, my_score = init()
-    ask_questions()
+    ask_questions(my_questions, my_score)
     final()
