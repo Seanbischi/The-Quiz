@@ -11,6 +11,8 @@ def init():
 def ask_questions(questions, score):
     for q_index in range(len(questions)):
         print(questions[q_index]["question"])
+        for o_index in range(len(questions[q_index]["options"])):
+            print(questions[q_index]["options"][o_index]["text"])
 
 
 
