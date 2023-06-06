@@ -10,7 +10,8 @@ def init():
 
 def ask_questions(questions, score):
     for q_index in range(len(questions)):
-        pass
+        print(questions[q_index]["question"])
+
 
 
 def final():
