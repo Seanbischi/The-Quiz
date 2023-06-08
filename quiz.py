@@ -12,7 +12,17 @@ def ask_questions(questions, score):
     for q_index in range(len(questions)):
         print(questions[q_index]["question"])
         for o_index in range(len(questions[q_index]["options"])):
-            print(questions[q_index]["options"][o_index]["text"])
+            print(f'{o_index + 1}: {questions[q_index]["options"][o_index]["text"]}')
+        answer = int(input(f'Bitte geben sie eine korekte antwort.'))
+        if questions[q_index]["options"][answer - 1]["correct"]:
+            score += 1
+        print(f'\n')
+        print(f'Ihren momentan Punkteanzahl ist : {score}\n')
+
+
+
+
+
 
 
 
