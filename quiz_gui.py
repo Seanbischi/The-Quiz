@@ -1,59 +1,63 @@
-import customtkinter as ck
-import  quiz
+import json
+import tkinter as tk
+from tkinter import messagebox as msg
 
-QUESTION_FILE = "questions.json"
+class QuizApp:
+    def __init__(self, master):
+        self.master = master
+        self.questions, self.score = self.init()
+        self.index = 0
+        self.correct_answer = None
 
-def time_string(t_sec):
-    h = str(t_sec // 3600 )
-    m = str((t_sec // 60) % 60)
-    s = str(t_sec % 60)
-    return f'{h.zfill(2)}:{m.zfill(2)}:{s.zfill(2)}'
+        # Creating GUI components
+        self.question_label = tk.Label(master, text="")
+        self.question_label.pack()
+        self.var = tk.IntVar()
+        self.option_buttons = []
+        for i in range(3):
+            button = tk.Radiobutton(master, text="", variable=self.var, value=i)
+            button.pack()
+            self.option_buttons.append(button)
+        self.check_button = tk.Button(master, text="Check", command=self.check_answer)
+        self.check_button.pack()
+        self.score_label = tk.Label(master, text=f'Score: {self.score}')
+        self.score_label.pack()
 
+        # Display the first question
+        self.display_question()
 
-class infoFrame(ck.CTkFrame):
-    def __int__(self, master):
-        super().__init__(master)
-        self.grid_columnconfigure(2, weight=1)
-
-        self.start_button = ck.CTbutton(master=self, text="Go to Start", width=100, command=start)
-        self.start_button.grid(row=2, culumn=2, sticky="w", padx=20, pady=(50, 5))
-
-        self.instruction_button = ck.CTbutton(master=self text="Instructions", width=100, comand=start)
-        self.instruction_button.grid(row=4,column=2, stocky="w", padx=26, pady=(10, 0))
-
-        self.clock_label.setvar("time", "00:00:00")
-        self.clock_timer = None
-        self.clock_paused = True
-
-    def update_clock(self, t_sec):
-        self.clock_paused = False
-        self.clock_label.setvar("time", time_string(t_sec))
-        self.clock_label.configure(text=f'time: {self.clock_label.getvar("time")}')
-        self.clock_timer = self.after(1000, self.update_clock, t_sec +1)
-
-    def pause_resume(self):
-        if self.clock_paused:
-            time = self.clock_label.getvar("time").split(":")
-            t_sec = int(time[0]) * 3600 + int(time[1]) * 60 + int(time[2]))
-            self.update_clock(t_sec)
-        else:
-            self.clock_paused = True
-            self.after_cancel(self.clock_timer)
-class QuestionFrame(ck.CTkFrame):
-    def __int__(self, master, question_number, card):
-        super():__init__(master)
-        self.grid_colmnconfigure(2, weight=1)
-        self.question_number = question_number
+    def init(self):
+        with open("questions.json", "r") as f:
+            questions = json.load(f)
+        score = 0
+        return questions, score
 
     def display_question(self):
-        pass
-        # Code to display the question
+        q = self.questions[self.index]
+        self.question_label.config(text=q["question"])
+        for i, opt in enumerate(q["options"]):
+            self.option_buttons[i].config(text=opt["text"])
+            if opt["correct"]:
+                self.correct_answer = i
+        self.var.set(-1)
 
-        def check_answer(self):
-            pass
+    def check_answer(self):
+        if self.var.get() == self.correct_answer:
+            self.score += 1
+            self.score_label.config(text=f'Score: {self.score}')
+            msg.showinfo("Correct", "Your answer is correct!")
+        else:
+            msg.showerror("Incorrect", "Your answer is incorrect!")
 
-        # Code to check the selected answer
+        self.index += 1
+        if self.index < len(self.questions):
+            self.display_question()
+        else:
+            msg.showinfo("End", "The quiz has ended!")
 
-        def submit_answer(self):
-            pass
-    # Code to submit the answer and move to the next question
+if __name__ == "__main__":
+    root = tk.Tk()
+    root.title("Quiz App")
+    app = QuizApp(root)
+    root.mainloop()
+
