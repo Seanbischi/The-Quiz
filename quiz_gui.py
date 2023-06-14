@@ -45,7 +45,7 @@ class QuizApp:
         if self.var.get() == self.correct_answer:
             self.score += 1
             self.score_label.config(text=f'Score: {self.score}')
-            msg.showinfo("Correct", "Your answer is correct!")
+            msg.showinfo("Correct", "Die gegebene antowort ist Korekt !")
         else:
             msg.showerror("Incorrect", "Die gegebene antwort ist falsch!")
 
